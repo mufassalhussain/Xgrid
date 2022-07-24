@@ -87,34 +87,46 @@ class _ProfileState extends State<Profile> {
                       "Upgrade to PRO",
                     ),
                   )),
-              listTileProfilePage(
-                "Privacy",
-                Icon(Icons.privacy_tip),
-                Icon(Icons.privacy_tip),
-              )
+              profileListTile("privacy", Icon(Icons.privacy_tip),
+                  Icon(Icons.arrow_forward_ios)),
+              profileListTile(
+                  "Info", Icon(Icons.info), Icon(Icons.arrow_forward_ios)),
+              profileListTile("Setting", Icon(Icons.settings),
+                  Icon(Icons.arrow_forward_ios)),
+              profileListTile("About", Icon(Icons.info_sharp),
+                  Icon(Icons.arrow_forward_ios)),
+              profileListTile("User Data", Icon(Icons.home_filled),
+                  Icon(Icons.arrow_forward_ios)),
+              FractionallySizedBox(
+                  widthFactor:
+                      0.5, // means 100%, you can change this to 0.8 (80%)
+                  child: RaisedButton(
+                    onPressed: () {},
+                    color: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: Text("Logout",
+                        style: TextStyle(
+                          color: Colors.white,
+                        )),
+                  )),
             ],
           ),
         ));
   }
-}
 
-class listTileProfilePage extends StatelessWidget {
-  final text;
-  final leadingIcon;
-  final trailingIcon;
-  listTileProfilePage({this.text, this.leadingIcon, this.trailingIcon});
-
-  @override
-  Widget build(BuildContext context) {
+  Padding profileListTile(text, leadingIcon, trailingIcon) {
     return Padding(
-      padding: EdgeInsets.all(25),
+      padding: EdgeInsets.all(15),
       child: ListTile(
-          tileColor: Colors.grey,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-          title: Text(text),
-          trailing: leadingIcon,
-          leading: trailingIcon),
+        tileColor: Colors.grey,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        title: Text(
+          text,
+        ),
+        trailing: trailingIcon,
+        leading: leadingIcon,
+      ),
     );
   }
 }
